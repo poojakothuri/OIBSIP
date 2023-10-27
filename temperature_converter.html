@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature converter</title>
+    <style>
+        * {
+            font-size: 2.5vh;
+        }
+
+        body {
+            background-color: rgb(50, 50, 109);
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            border: 2px solid gray;
+            width: 48vw;
+            height: 48vh;
+            background-color: rgb(26, 69, 107);
+            border-radius: 20px;
+            box-shadow: 20px 20px 10px black;
+
+
+
+
+        }
+
+        h1 {
+            font-size: 5vh;
+            padding: 10px;
+            text-align: center;
+            color: #ddeb1fea;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-shadow: 12px 10px 5px black;
+        }
+
+        h3 {
+            text-align: center;
+            color: rgb(204, 221, 170);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #box {
+            text-align: center;
+            padding: .5rem;
+        }
+
+        #num {
+            height: 6vh;
+            border-radius: 0.5rem;
+
+
+        }
+
+        #type {
+            height: 6vh;
+            border-radius: 0.5rem;
+
+        }
+
+        #submit {
+            text-align: center;
+        }
+
+        #sub {
+            height: 6vh;
+            width: 10vw;
+            border-radius: 0.5rem;
+            background-color: rgb(138, 138, 214);
+            font-weight: 80px;
+            margin: 0.5rem;
+            cursor: pointer;
+        }
+
+
+        #result {
+            margin: .5rem;
+            color: white;
+            font-size: 3vh;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="box"> -->
+        <h1> Temperature Converter</h1>
+        <h3>Select the temperature type of input </h3>
+        <div id="box"> <input text="number" id="num">
+            <select id="type">
+                <option value="select" important>Type</option>
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
+        </div>
+        <div id="submit"><button id="sub" onclick="fun()">Submit</button></div>
+        <!-- </div> -->
+        <div id="result"></div>
+    </div>
+    <script>
+        let input = document.getElementById("num");
+        let type = document.getElementById("type");
+        var sub = document.getElementById("sub"); var convertedtemp;//console.log(typeof(NaN));
+        function fun() {
+
+            var temp = parseFloat(input.value);
+            var result = document.getElementById("result");
+            if (type.value == "celsius") {
+                console.log(Number(input.value));
+                console.log(isFinite(Number(input.value)));
+                if (input.value !== "" && isFinite(Number(input.value))) {
+                    convertedtemp = (temp * (9 / 5)) + 32;
+                    result.textContent = `${input.value} degree celsius = ${convertedtemp.toFixed(3)} degrees fahrenheit`;
+                } else {
+                    result.textContent = "Enter appropriate number";
+                }
+            }
+            else if (type.value == "fahrenheit") {
+                if (input.value !== "" && isFinite(Number(input.value))) {
+                    convertedtemp = (temp - 32) * (5 / 9);
+                    result.textContent = `${input.value} degree fahrenheit = ${convertedtemp.toFixed(3)} degrees celsius`;
+                } else {
+                    result.textContent = "Enter appropriate number";
+                }
+            }
+            else {
+                result.textContent = "Select input type";
+            }
+
+            input.value = "";
+        }
+    </script>
+</body>
+
+</html>
